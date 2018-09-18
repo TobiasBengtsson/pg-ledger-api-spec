@@ -1,0 +1,24 @@
+openapi: "3.0.1"
+info:
+  version: "1.0.0-alpha1"
+  title: "pg-ledger API"
+  description: "API to access the pg-ledger database."
+  license:
+    name: "GNU Affero General Public License version 3"
+    url: "https://www.gnu.org/licenses/agpl.txt"
+paths:
+  /accounts:
+    get:
+      description: "Gets all accounts."
+      responses:
+        '200':
+          description: "A list of accounts."
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    account_full_name:
+                      type: "string"
