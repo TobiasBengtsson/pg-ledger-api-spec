@@ -22,3 +22,20 @@ paths:
                   properties:
                     account_full_name:
                       type: "string"
+    post:
+      description: "Adds a new account with the specified full name."
+      requestBody:
+        description: "The account to add."
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                account_full_name:
+                  type: "string"
+        required: true
+      responses:
+        '201':
+          description: "The account was successfully added."
+        '409':
+          description: "The account with the specified name already exists."
