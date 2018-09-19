@@ -210,6 +210,34 @@ paths:
           description: "The commodity with the specified symbol already exists."
       tags:
       - "Commodities"
+  /commodities/{symbol}:
+    parameters:
+    - name: "symbol"
+      in: "path"
+      required: true
+      description: "The commodity's symbol"
+      schema:
+        type: "string"
+    get:
+      description: "Gets the commodity with the specified symbol."
+      responses:
+        '200':
+          description: "The commodity exists, and is returned."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  symbol:
+                    type: "string"
+                  isPrefix:
+                    type: "boolean"
+                  hasSpace:
+                    type: "boolean"
+        '404':
+          description: "The commodity does not exist."
+      tags:
+      - "Commodities"
 tags:
 - name: "Accounts"
   description: "Operations that can be performed on accounts."
