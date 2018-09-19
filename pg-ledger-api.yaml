@@ -258,6 +258,17 @@ paths:
           description: "The commodity does not exist."
       tags:
       - "Commodities"
+    delete:
+      description: "Deletes the commodity with the specified symbol."
+      responses:
+        '204':
+          description: "The commodity was successfully deleted."
+        '400':
+          description: "The commodity could not be deleted."
+        '404':
+          description: "The commodity does not exist."
+      tags:
+      - "Commodities"
 tags:
 - name: "Accounts"
   description: "Operations that can be performed on accounts."
