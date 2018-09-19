@@ -187,6 +187,29 @@ paths:
                           type: "boolean"
       tags:
       - "Commodities"
+    post:
+      description: "Adds a new commodity with the specified properties."
+      requestBody:
+        description: "The commodity to add."
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                symbol:
+                  type: "string"
+                isPrefix:
+                  type: "boolean"
+                hasSpace:
+                  type: "boolean"
+        required: true
+      responses:
+        '201':
+          description: "The commodity was successfully added."
+        '409':
+          description: "The commodity with the specified symbol already exists."
+      tags:
+      - "Commodities"
 tags:
 - name: "Accounts"
   description: "Operations that can be performed on accounts."
