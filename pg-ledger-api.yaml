@@ -22,6 +22,8 @@ paths:
                   properties:
                     account_full_name:
                       type: "string"
+      tags:
+      - "Accounts"
     post:
       description: "Adds a new account with the specified full name."
       requestBody:
@@ -39,6 +41,8 @@ paths:
           description: "The account was successfully added."
         '409':
           description: "The account with the specified name already exists."
+      tags:
+      - "Accounts"
   /accounts/balances:
     get:
       description: "Gets the balances of all accounts."
@@ -63,6 +67,8 @@ paths:
                             type: "string"
                           balance:
                             type: "number"
+      tags:
+      - "Accounts"
   /accounts/{account_full_name}:
     parameters:
     - name: "account_full_name"
@@ -85,6 +91,8 @@ paths:
                     type: "string"
         '404':
           description: "The account does not exist."
+      tags:
+      - "Accounts"
     delete:
       description: "Deletes the account with the specified name."
       responses:
@@ -94,6 +102,8 @@ paths:
           description: "The account could not be deleted."
         '404':
           description: "The account does not exist."
+      tags:
+      - "Accounts"
   /accounts/{account_full_name}/balance:
     parameters:
     - name: "account_full_name"
@@ -118,3 +128,14 @@ paths:
                       type: "string"
                     balance:
                       type: "number"
+      tags:
+      - "Accounts"
+tags:
+- name: "Accounts"
+  description: "Operations that can be performed on accounts."
+- name: "Commodities"
+  description: "Operations that can be performed on commodities."
+- name: "Transactions"
+  description: "Operations that can be performed on transactions."
+- name: "Formulas"
+  description: "Operations that can be performed on formulas."
