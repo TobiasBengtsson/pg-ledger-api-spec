@@ -10,18 +10,36 @@ paths:
   /accounts:
     get:
       description: "Gets all accounts."
+      parameters:
+      - name: "skip"
+        in: "query"
+        required: false
+        description: "Skip this many accounts. If not specified, this should default to 0."
+        schema:
+          type: "number"
+      - name: "take"
+        in: "query"
+        required: false
+        description: "Take this many accounts. If not specified, this should default to 100."
+        schema:
+          type: "number"
       responses:
         '200':
-          description: "A list of accounts."
+          description: "A list of accounts, ordered by full name."
           content:
             application/json:
               schema:
-                type: "array"
-                items:
-                  type: "object"
-                  properties:
-                    account_full_name:
-                      type: "string"
+                type: "object"
+                properties:
+                  totalCount:
+                    type: "number"
+                  accounts:
+                    type: "array"
+                    items:
+                      type: "object"
+                      properties:
+                        accountFullName:
+                          type: "string"
       tags:
       - "Accounts"
     post:
