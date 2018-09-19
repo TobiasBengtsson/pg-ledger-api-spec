@@ -63,3 +63,25 @@ paths:
                             type: "string"
                           balance:
                             type: "number"
+  /accounts/{account_full_name}:
+    parameters:
+    - name: "account_full_name"
+      in: "path"
+      required: true
+      description: "The full name of the account"
+      schema:
+        type: "string"
+    get:
+      description: "Gets the account with the specified name."
+      responses:
+        '200':
+          description: "The account exists, and is returned."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  account_full_name:
+                    type: "string"
+        '404':
+          description: "The account does not exist."
