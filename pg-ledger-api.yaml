@@ -39,3 +39,27 @@ paths:
           description: "The account was successfully added."
         '409':
           description: "The account with the specified name already exists."
+  /accounts/balances:
+    get:
+      description: "Gets the balances of all accounts."
+      responses:
+        '200':
+          description: "A list of accounts with balances."
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    account_full_name:
+                      type: "string"
+                    balance:
+                      type: "array"
+                      items:
+                        type: "object"
+                        properties:
+                          commoditySymbol:
+                            type: "string"
+                          balance:
+                            type: "number"
