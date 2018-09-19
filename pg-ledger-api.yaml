@@ -85,3 +85,12 @@ paths:
                     type: "string"
         '404':
           description: "The account does not exist."
+    delete:
+      description: "Deletes the account with the specified name."
+      responses:
+        '204':
+          description: "The account was successfully deleted."
+        '400':
+          description: "The account could not be deleted."
+        '404':
+          description: "The account does not exist."
