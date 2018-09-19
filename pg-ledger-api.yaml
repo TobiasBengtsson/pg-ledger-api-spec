@@ -94,3 +94,27 @@ paths:
           description: "The account could not be deleted."
         '404':
           description: "The account does not exist."
+  /accounts/{account_full_name}/balance:
+    parameters:
+    - name: "account_full_name"
+      in: "path"
+      required: true
+      description: "The full name of the account"
+      schema:
+        type: "string"
+    get:
+      description: "Gets the balance of the account with the specified name."
+      responses:
+        '200':
+          description: "The account exists, and its balances are returned."
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    commoditySymbol:
+                      type: "string"
+                    balance:
+                      type: "number"
