@@ -238,6 +238,26 @@ paths:
           description: "The commodity does not exist."
       tags:
       - "Commodities"
+    put:
+      description: "Updates the commodity with the specified symbol."
+      requestBody:
+        description: "The new values of the commodity's properties."
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                isPrefix:
+                  type: "boolean"
+                hasSpace:
+                  type: "boolean"
+      responses:
+        '204':
+          description: "The commodity was successfully updated."
+        '404':
+          description: "The commodity does not exist."
+      tags:
+      - "Commodities"
 tags:
 - name: "Accounts"
   description: "Operations that can be performed on accounts."
