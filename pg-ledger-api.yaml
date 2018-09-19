@@ -51,7 +51,7 @@ paths:
             schema:
               type: "object"
               properties:
-                account_full_name:
+                accountFullName:
                   type: "string"
         required: true
       responses:
@@ -74,7 +74,7 @@ paths:
                 items:
                   type: "object"
                   properties:
-                    account_full_name:
+                    accountFullName:
                       type: "string"
                     balance:
                       type: "array"
@@ -87,9 +87,9 @@ paths:
                             type: "number"
       tags:
       - "Accounts"
-  /accounts/{account_full_name}:
+  /accounts/{accountFullName}:
     parameters:
-    - name: "account_full_name"
+    - name: "accountFullName"
       in: "path"
       required: true
       description: "The full name of the account"
@@ -105,7 +105,7 @@ paths:
               schema:
                 type: "object"
                 properties:
-                  account_full_name:
+                  accountFullName:
                     type: "string"
         '404':
           description: "The account does not exist."
@@ -122,9 +122,9 @@ paths:
           description: "The account does not exist."
       tags:
       - "Accounts"
-  /accounts/{account_full_name}/balance:
+  /accounts/{accountFullName}/balance:
     parameters:
-    - name: "account_full_name"
+    - name: "accountFullName"
       in: "path"
       required: true
       description: "The full name of the account"
