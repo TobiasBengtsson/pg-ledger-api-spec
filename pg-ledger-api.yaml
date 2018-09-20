@@ -361,6 +361,53 @@ paths:
           description: "The transaction could not be added."
       tags:
       - "Transactions"
+  /transactions/{id}:
+    parameters:
+    - name: "id"
+      in: "path"
+      required: true
+      description: "The ID of the transaction."
+      schema:
+        type: "string"
+        format: "uuid"
+    get:
+      description: "Gets the transaction with the specified ID."
+      responses:
+        '200':
+          description: "The transaction exists, and is returned."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  id:
+                    type: "string"
+                    format: "uuid"
+                  date:
+                    type: "string"
+                    format: "date"
+                  text:
+                    type: "string"
+                  insertionOrder:
+                    type: "number"
+                  rows:
+                    type: "array"
+                    items:
+                      type: "object"
+                      properties:
+                        id:
+                          type: "string"
+                          format: "uuid"
+                        accountFullName:
+                          type: "string"
+                        commoditySymbol:
+                          type: "string"
+                        amount:
+                          type: "number"
+        '404':
+          description: "The transaction does not exist."
+      tags:
+      - "Transactions"
 tags:
 - name: "Accounts"
   description: "Operations that can be performed on accounts."
