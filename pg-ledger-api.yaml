@@ -269,6 +269,63 @@ paths:
           description: "The commodity does not exist."
       tags:
       - "Commodities"
+  /transactions:
+    get:
+      description: "Gets all transactions."
+      parameters:
+      - name: "skip"
+        in: "query"
+        required: false
+        description: "Skip this many transactions. If not specified, this should default to 0."
+        schema:
+          type: "number"
+      - name: "take"
+        in: "query"
+        required: false
+        description: "Take this many transactions. If not specified, this should default to 100."
+        schema:
+          type: "number"
+      responses:
+        '200':
+          description: "A list of transactions, ordered by latest first followed by descending insertion order."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  totalCount:
+                    type: "number"
+                  transactions:
+                    type: "array"
+                    items:
+                      type: "object"
+                      properties:
+                        id:
+                          type: "string"
+                          format: "uuid"
+                        date:
+                          type: "string"
+                          format: "date"
+                        text:
+                          type: "string"
+                        insertionOrder:
+                          type: "number"
+                        rows:
+                          type: "array"
+                          items:
+                            type: "object"
+                            properties:
+                              id:
+                                type: "string"
+                                format: "uuid"
+                              accountFullName:
+                                type: "string"
+                              commoditySymbol:
+                                type: "string"
+                              amount:
+                                type: "number"
+      tags:
+      - "Transactions"
 tags:
 - name: "Accounts"
   description: "Operations that can be performed on accounts."
