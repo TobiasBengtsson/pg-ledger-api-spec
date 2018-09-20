@@ -326,6 +326,41 @@ paths:
                                 type: "number"
       tags:
       - "Transactions"
+    post:
+      description: "Adds a new transaction."
+      requestBody:
+        description: "The transaction to add."
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                date:
+                  type: "string"
+                  format: "date"
+                text:
+                  type: "string"
+                insertionOrder:
+                  type: "number"
+                rows:
+                  type: "array"
+                  items:
+                    type: "object"
+                    properties:
+                      accountFullName:
+                        type: "string"
+                      commoditySymbol:
+                        type: "string"
+                      amount:
+                        type: "number"
+        required: true
+      responses:
+        '201':
+          description: "The transaction was successfully added."
+        '400':
+          description: "The transaction could not be added."
+      tags:
+      - "Transactions"
 tags:
 - name: "Accounts"
   description: "Operations that can be performed on accounts."
