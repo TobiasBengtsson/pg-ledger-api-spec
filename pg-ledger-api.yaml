@@ -408,6 +408,42 @@ paths:
           description: "The transaction does not exist."
       tags:
       - "Transactions"
+    put:
+      description: "Replaces the transaction with the specified ID with a new transaction."
+      requestBody:
+        description: "The transaction to replace with."
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                date:
+                  type: "string"
+                  format: "date"
+                text:
+                  type: "string"
+                insertionOrder:
+                  type: "number"
+                rows:
+                  type: "array"
+                  items:
+                    type: "object"
+                    properties:
+                      accountFullName:
+                        type: "string"
+                      commoditySymbol:
+                        type: "string"
+                      amount:
+                        type: "number"
+      responses:
+        '204':
+          description: "The transaction was successfully replaced."
+        '400':
+          description: "The transaction could not be replaced."
+        '404':
+          description: "The transaction does not exist."
+      tags:
+      - "Transactions"
 tags:
 - name: "Accounts"
   description: "Operations that can be performed on accounts."
